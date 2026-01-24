@@ -60,10 +60,9 @@ export const IntentKeywordList = ({ color, onRoomSelect }) => {
   const [selectedIntent, setSelectedIntent] = useState(null);
   const [hoveredRoom, setHoveredRoom] = useState(null);
 
-  const keywords = MOCK_KEYWORDS[color] || [];
-
   // Generate room combinations based on intent × keyword
   const rooms = useMemo(() => {
+    const keywords = MOCK_KEYWORDS[color] || [];
     const result = [];
     const intentsToUse = selectedIntent 
       ? INTENTS.filter(i => i.id === selectedIntent) 
