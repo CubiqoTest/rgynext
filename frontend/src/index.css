@@ -123,6 +123,140 @@ code {
     body {
         @apply bg-background text-foreground;
     }
+    
+    /* Custom scrollbar for dark theme */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+        background: hsl(var(--surface-1));
+    }
+    ::-webkit-scrollbar-thumb {
+        background: hsl(var(--surface-3));
+        border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: hsl(var(--surface-4));
+    }
+}
+
+@layer components {
+    /* RGY Color Selector Styles */
+    .rgy-selector-green {
+        @apply border-rgy-green/30 hover:border-rgy-green/60;
+        background: linear-gradient(135deg, hsl(var(--rgy-green) / 0.08) 0%, transparent 50%);
+    }
+    .rgy-selector-green.active {
+        @apply border-rgy-green;
+        box-shadow: 0 0 30px hsl(var(--rgy-green) / 0.25), inset 0 0 20px hsl(var(--rgy-green) / 0.08);
+    }
+    
+    .rgy-selector-yellow {
+        @apply border-rgy-yellow/30 hover:border-rgy-yellow/60;
+        background: linear-gradient(135deg, hsl(var(--rgy-yellow) / 0.08) 0%, transparent 50%);
+    }
+    .rgy-selector-yellow.active {
+        @apply border-rgy-yellow;
+        box-shadow: 0 0 30px hsl(var(--rgy-yellow) / 0.25), inset 0 0 20px hsl(var(--rgy-yellow) / 0.08);
+    }
+    
+    .rgy-selector-red {
+        @apply border-rgy-red/30 hover:border-rgy-red/60;
+        background: linear-gradient(135deg, hsl(var(--rgy-red) / 0.08) 0%, transparent 50%);
+    }
+    .rgy-selector-red.active {
+        @apply border-rgy-red;
+        box-shadow: 0 0 30px hsl(var(--rgy-red) / 0.25), inset 0 0 20px hsl(var(--rgy-red) / 0.08);
+    }
+    
+    /* Room item hover states */
+    .room-item {
+        @apply relative overflow-hidden;
+    }
+    .room-item::before {
+        content: '';
+        @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    }
+    .room-item:hover::before {
+        @apply opacity-100;
+    }
+    .room-item.green::before {
+        background: linear-gradient(90deg, hsl(var(--rgy-green) / 0.05) 0%, transparent 50%);
+    }
+    .room-item.yellow::before {
+        background: linear-gradient(90deg, hsl(var(--rgy-yellow) / 0.05) 0%, transparent 50%);
+    }
+    .room-item.red::before {
+        background: linear-gradient(90deg, hsl(var(--rgy-red) / 0.05) 0%, transparent 50%);
+    }
+    
+    /* Chat message bubbles */
+    .chat-bubble-system {
+        @apply bg-surface-2 text-foreground/90;
+    }
+    .chat-bubble-user {
+        background: linear-gradient(135deg, hsl(var(--surface-3)) 0%, hsl(var(--surface-2)) 100%);
+    }
+    
+    /* Glass effect for cards */
+    .glass-card {
+        background: linear-gradient(135deg, hsl(var(--surface-1) / 0.8) 0%, hsl(var(--surface-0) / 0.6) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    /* Intent badges */
+    .intent-badge-collab {
+        @apply bg-rgy-blue/15 text-rgy-blue border-rgy-blue/30;
+    }
+    .intent-badge-company {
+        @apply bg-rgy-green/15 text-rgy-green border-rgy-green/30;
+    }
+    .intent-badge-trade {
+        @apply bg-rgy-yellow/15 text-rgy-yellow border-rgy-yellow/30;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
 }
 
 @layer base {
