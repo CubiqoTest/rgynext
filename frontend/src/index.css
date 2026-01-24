@@ -2,74 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 body {
     margin: 0;
-    font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family:
-        source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-family: 'Space Grotesk', source-code-pro, Menlo, Monaco, monospace;
 }
 
 @layer base {
     :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
+        /* CubiQo Dark Theme - Modern OS-like */
+        --background: 220 20% 4%;
+        --foreground: 210 20% 98%;
+        
+        --card: 220 18% 7%;
+        --card-foreground: 210 20% 98%;
+        
+        --popover: 220 18% 8%;
+        --popover-foreground: 210 20% 98%;
+        
+        --primary: 210 20% 98%;
+        --primary-foreground: 220 20% 4%;
+        
+        --secondary: 220 15% 12%;
+        --secondary-foreground: 210 20% 90%;
+        
+        --muted: 220 15% 10%;
+        --muted-foreground: 215 15% 55%;
+        
+        --accent: 220 15% 15%;
+        --accent-foreground: 210 20% 98%;
+        
+        --destructive: 0 72% 51%;
+        --destructive-foreground: 0 0% 100%;
+        
+        --border: 220 15% 15%;
+        --input: 220 15% 12%;
+        --ring: 210 20% 80%;
+        
+        /* RGY Colors - Neon Accents */
+        --rgy-red: 350 85% 58%;
+        --rgy-red-glow: 350 100% 65%;
+        --rgy-green: 160 80% 45%;
+        --rgy-green-glow: 160 100% 55%;
+        --rgy-yellow: 45 95% 55%;
+        --rgy-yellow-glow: 45 100% 65%;
+        --rgy-blue: 210 90% 55%;
+        --rgy-blue-glow: 210 100% 65%;
+        
+        /* Surface levels for depth */
+        --surface-0: 220 20% 4%;
+        --surface-1: 220 18% 7%;
+        --surface-2: 220 16% 10%;
+        --surface-3: 220 15% 14%;
+        --surface-4: 220 14% 18%;
+        
+        /* Gradients */
+        --gradient-dark: linear-gradient(180deg, hsl(220 20% 4%) 0%, hsl(220 18% 7%) 100%);
+        --gradient-card: linear-gradient(135deg, hsl(220 18% 8%) 0%, hsl(220 16% 6%) 100%);
+        --gradient-glow-red: radial-gradient(circle at center, hsl(350 85% 58% / 0.15) 0%, transparent 70%);
+        --gradient-glow-green: radial-gradient(circle at center, hsl(160 80% 45% / 0.15) 0%, transparent 70%);
+        --gradient-glow-yellow: radial-gradient(circle at center, hsl(45 95% 55% / 0.15) 0%, transparent 70%);
+        
+        /* Shadows */
+        --shadow-sm: 0 2px 8px -2px hsl(220 20% 0% / 0.4);
+        --shadow-md: 0 4px 16px -4px hsl(220 20% 0% / 0.5);
+        --shadow-lg: 0 8px 32px -8px hsl(220 20% 0% / 0.6);
+        --shadow-glow-red: 0 0 30px hsl(350 85% 58% / 0.3);
+        --shadow-glow-green: 0 0 30px hsl(160 80% 45% / 0.3);
+        --shadow-glow-yellow: 0 0 30px hsl(45 95% 55% / 0.3);
+        
+        /* Animation timing */
+        --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+        
+        --radius: 0.75rem;
+        
+        --chart-1: 350 85% 58%;
+        --chart-2: 160 80% 45%;
+        --chart-3: 45 95% 55%;
+        --chart-4: 210 90% 55%;
+        --chart-5: 280 75% 60%;
     }
+    
+    /* Dark mode is default for CubiQo */
     .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
+        --background: 220 20% 4%;
+        --foreground: 210 20% 98%;
+        --card: 220 18% 7%;
+        --card-foreground: 210 20% 98%;
+        --popover: 220 18% 8%;
+        --popover-foreground: 210 20% 98%;
+        --primary: 210 20% 98%;
+        --primary-foreground: 220 20% 4%;
+        --secondary: 220 15% 12%;
+        --secondary-foreground: 210 20% 90%;
+        --muted: 220 15% 10%;
+        --muted-foreground: 215 15% 55%;
+        --accent: 220 15% 15%;
+        --accent-foreground: 210 20% 98%;
+        --destructive: 0 72% 51%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 220 15% 15%;
+        --input: 220 15% 12%;
+        --ring: 210 20% 80%;
     }
 }
 
