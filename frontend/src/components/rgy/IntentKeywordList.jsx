@@ -90,7 +90,7 @@ export const IntentKeywordList = ({ color, onRoomSelect }) => {
     });
     
     return result;
-  }, [keywords, selectedIntent, searchQuery]);
+  }, [color, selectedIntent, searchQuery]);
 
   const handleRoomClick = (room) => {
     onRoomSelect(room);
