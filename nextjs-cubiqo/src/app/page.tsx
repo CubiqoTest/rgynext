@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { ColorSelector } from "@/components/rgy/ColorSelector";
-import { IntentKeywordList } from "@/components/rgy/IntentKeywordList";
+import { IntentKeywordList, Room } from "@/components/rgy/IntentKeywordList";
 import { RoomView } from "@/components/rgy/RoomView";
 import { AppHeader } from "@/components/rgy/AppHeader";
 import { cn } from "@/lib/utils";
@@ -16,21 +16,6 @@ const STATES = {
 
 type AppState = typeof STATES[keyof typeof STATES];
 type ColorType = "green" | "yellow" | "red" | null;
-
-interface Room {
-  id: string;
-  intent: {
-    id: string;
-    label: string;
-    description: string;
-    icon: React.ComponentType<{ className?: string }>;
-    badgeClass: string;
-  };
-  keyword: string;
-  name: string;
-  memberCount: number;
-  isActive: boolean;
-}
 
 export default function Home() {
   const [currentState, setCurrentState] = useState<AppState>(STATES.COLOR_SELECT);
