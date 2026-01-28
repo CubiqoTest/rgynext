@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* CubiQo Dark Theme - Modern OS-like */
+    --background: 220 20% 4%;
+    --foreground: 210 20% 98%;
+    
+    --card: 220 18% 7%;
+    --card-foreground: 210 20% 98%;
+    
+    --popover: 220 18% 8%;
+    --popover-foreground: 210 20% 98%;
+    
+    --primary: 210 20% 98%;
+    --primary-foreground: 220 20% 4%;
+    
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 210 20% 90%;
+    
+    --muted: 220 15% 10%;
+    --muted-foreground: 215 15% 55%;
+    
+    --accent: 220 15% 15%;
+    --accent-foreground: 210 20% 98%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 15% 15%;
+    --input: 220 15% 12%;
+    --ring: 210 20% 80%;
+    
+    /* RGY Colors - Neon Accents */
+    --rgy-red: 350 85% 58%;
+    --rgy-red-glow: 350 100% 65%;
+    --rgy-green: 160 80% 45%;
+    --rgy-green-glow: 160 100% 55%;
+    --rgy-yellow: 45 95% 55%;
+    --rgy-yellow-glow: 45 100% 65%;
+    --rgy-blue: 210 90% 55%;
+    --rgy-blue-glow: 210 100% 65%;
+    
+    /* Surface levels for depth */
+    --surface-0: 220 20% 4%;
+    --surface-1: 220 18% 7%;
+    --surface-2: 220 16% 10%;
+    --surface-3: 220 15% 14%;
+    --surface-4: 220 14% 18%;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px -2px hsl(220 20% 0% / 0.4);
+    --shadow-md: 0 4px 16px -4px hsl(220 20% 0% / 0.5);
+    --shadow-lg: 0 8px 32px -8px hsl(220 20% 0% / 0.6);
+    --shadow-glow-red: 0 0 30px hsl(350 85% 58% / 0.3);
+    --shadow-glow-green: 0 0 30px hsl(160 80% 45% / 0.3);
+    --shadow-glow-yellow: 0 0 30px hsl(45 95% 55% / 0.3);
+    
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--surface-1));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--surface-3));
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--surface-4));
+  }
+}
+
+@layer components {
+  /* RGY Color Selector Styles */
+  .rgy-selector-green {
+    @apply border-rgy-green/30 hover:border-rgy-green/60;
+    background: linear-gradient(135deg, hsl(var(--rgy-green) / 0.08) 0%, transparent 50%);
+  }
+  .rgy-selector-green.active {
+    @apply border-rgy-green;
+    box-shadow: 0 0 30px hsl(var(--rgy-green) / 0.25), inset 0 0 20px hsl(var(--rgy-green) / 0.08);
+  }
+  
+  .rgy-selector-yellow {
+    @apply border-rgy-yellow/30 hover:border-rgy-yellow/60;
+    background: linear-gradient(135deg, hsl(var(--rgy-yellow) / 0.08) 0%, transparent 50%);
+  }
+  .rgy-selector-yellow.active {
+    @apply border-rgy-yellow;
+    box-shadow: 0 0 30px hsl(var(--rgy-yellow) / 0.25), inset 0 0 20px hsl(var(--rgy-yellow) / 0.08);
+  }
+  
+  .rgy-selector-red {
+    @apply border-rgy-red/30 hover:border-rgy-red/60;
+    background: linear-gradient(135deg, hsl(var(--rgy-red) / 0.08) 0%, transparent 50%);
+  }
+  .rgy-selector-red.active {
+    @apply border-rgy-red;
+    box-shadow: 0 0 30px hsl(var(--rgy-red) / 0.25), inset 0 0 20px hsl(var(--rgy-red) / 0.08);
+  }
+  
+  /* Room item hover states */
+  .room-item {
+    @apply relative overflow-hidden;
+  }
+  .room-item::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  }
+  .room-item:hover::before {
+    @apply opacity-100;
+  }
+  .room-item.green::before {
+    background: linear-gradient(90deg, hsl(var(--rgy-green) / 0.05) 0%, transparent 50%);
+  }
+  .room-item.yellow::before {
+    background: linear-gradient(90deg, hsl(var(--rgy-yellow) / 0.05) 0%, transparent 50%);
+  }
+  .room-item.red::before {
+    background: linear-gradient(90deg, hsl(var(--rgy-red) / 0.05) 0%, transparent 50%);
+  }
+  
+  /* Intent badges */
+  .intent-badge-collab {
+    @apply bg-rgy-blue/15 text-rgy-blue border-rgy-blue/30;
+  }
+  .intent-badge-company {
+    @apply bg-rgy-green/15 text-rgy-green border-rgy-green/30;
+  }
+  .intent-badge-trade {
+    @apply bg-rgy-yellow/15 text-rgy-yellow border-rgy-yellow/30;
+  }
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background: hsl(var(--primary) / 0.2);
+  color: hsl(var(--foreground));
+}
