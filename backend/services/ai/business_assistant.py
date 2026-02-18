@@ -4,7 +4,7 @@ AI-powered business assistance service
 from typing import Dict, List, Any, Optional
 import json
 import logging
-from ..models.business import (
+from models.business import (
     BusinessPlanRequest,
     BusinessPlan,
     PitchDeckRequest,
@@ -209,7 +209,7 @@ Risk Assessment:
         """Analyze competitors using AI and market data"""
         
         # In production, AI would scrape and analyze competitor data
-        from ..models.business import CompetitorInfo
+        from models.business import CompetitorInfo
         
         competitors = [
             CompetitorInfo(
