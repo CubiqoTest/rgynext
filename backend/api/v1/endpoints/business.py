@@ -3,7 +3,7 @@ Business tools endpoints
 """
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import Dict, Any, List
-from ...models.business import (
+from models.business import (
     BusinessProfile,
     BusinessPlanRequest,
     BusinessPlan,
@@ -15,8 +15,8 @@ from ...models.business import (
     CompetitorAnalysis,
     FundingStrategy,
 )
-from ...core.auth import get_current_user
-from ...services.ai.business_assistant import get_ai_assistant
+from core.auth import get_current_user
+from services.ai.business_assistant import get_ai_assistant
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 router = APIRouter(prefix="/business", tags=["business_tools"])
@@ -24,7 +24,7 @@ router = APIRouter(prefix="/business", tags=["business_tools"])
 
 async def get_db():
     """Dependency to get database"""
-    from ...config.settings import settings
+    from config.settings import settings
     from motor.motor_asyncio import AsyncIOMotorClient
     import os
     

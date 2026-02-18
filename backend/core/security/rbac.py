@@ -3,7 +3,7 @@ Role-Based Access Control (RBAC) utilities
 """
 from typing import List
 from fastapi import HTTPException, status, Depends
-from ..auth import get_current_user
+from core.auth import get_current_user
 
 
 class Role:

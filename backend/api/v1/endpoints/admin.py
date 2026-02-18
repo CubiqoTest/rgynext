@@ -2,17 +2,17 @@
 Admin dashboard endpoints
 """
 from fastapi import APIRouter, Depends, HTTPException, status
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from datetime import datetime, timedelta
-from ...models.analytics import (
+from models.analytics import (
     AdminDashboardData,
     SecurityAlert,
     UserSession,
     BusinessMetrics,
     UserActivityLog,
 )
-from ...core.auth import get_current_user
-from ...core.security.rbac import require_role, Role
+from core.auth import get_current_user
+from core.security.rbac import require_role, Role
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 router = APIRouter(prefix="/admin", tags=["admin"])
@@ -20,7 +20,7 @@ router = APIRouter(prefix="/admin", tags=["admin"])
 
 async def get_db():
     """Dependency to get database"""
-    from ...config.settings import settings
+    from config.settings import settings
     from motor.motor_asyncio import AsyncIOMotorClient
     import os
     

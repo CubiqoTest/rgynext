@@ -3,14 +3,14 @@ Authentication endpoints
 """
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import Dict, Any
-from ...models.user import (
+from models.user import (
     UserCreate,
     User,
     LoginRequest,
     Token,
     UserInDB,
 )
-from ...core.auth import (
+from core.auth import (
     get_password_hash,
     verify_password,
     create_access_token,
@@ -25,7 +25,7 @@ router = APIRouter(prefix="/auth", tags=["authentication"])
 
 async def get_db():
     """Dependency to get database"""
-    from ...config.settings import settings
+    from config.settings import settings
     from motor.motor_asyncio import AsyncIOMotorClient
     import os
     
@@ -131,7 +131,7 @@ async def get_current_user_info(
 @router.post("/refresh", response_model=Token)
 async def refresh_token(refresh_token: str):
     """Refresh access token"""
-    from ...core.auth import decode_token
+    from core.auth import decode_token
     
     # Verify refresh token
     payload = decode_token(refresh_token)
